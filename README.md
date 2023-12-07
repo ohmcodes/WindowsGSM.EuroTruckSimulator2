@@ -1,5 +1,5 @@
 # WindowsGSM.EuroTruckSimulator
-🧩 WindowsGSM plugin that provides Euro Truct Simulator Dedicated server support!
+🧩 WindowsGSM plugin that provides Euro Truck Simulator Dedicated server support!
 
 # WindowsGSM Installation: 
 1. Download  WindowsGSM https://windowsgsm.com/ 
