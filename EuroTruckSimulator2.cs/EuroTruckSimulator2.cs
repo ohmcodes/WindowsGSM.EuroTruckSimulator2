@@ -12,21 +12,21 @@ using System.Text.RegularExpressions;
 
 namespace WindowsGSM.Plugins
 {
-    public class EuroTruckSimulator : SteamCMDAgent
+    public class EuroTruckSimulator2 : SteamCMDAgent
     {
         // - Plugin Details
         public Plugin Plugin = new Plugin
         {
-            name = "WindowsGSM.EuroTruckSimulator", // WindowsGSM.XXXX
+            name = "WindowsGSM.EuroTruckSimulator2", // WindowsGSM.XXXX
             author = "ohmcodes",
-            description = "WindowsGSM plugin for supporting Euro Truck Simulator Dedicated Server",
-            version = "1.1.1",
+            description = "WindowsGSM plugin for supporting Euro Truck Simulator 2 Dedicated Server",
+            version = "1.2.1",
             url = "https://github.com/ohmcodes/WindowsGSM.EuroTruckSimulator", // Github repository link (Best practice)
             color = "#FFD700" // Color Hex
         };
 
         // - Standard Constructor and properties
-        public EuroTruckSimulator(ServerConfig serverData) : base(serverData) => base.serverData = _serverData = serverData;
+        public EuroTruckSimulator2(ServerConfig serverData) : base(serverData) => base.serverData = _serverData = serverData;
         private readonly ServerConfig _serverData;
         public string Error, Notice;
 
@@ -36,7 +36,7 @@ namespace WindowsGSM.Plugins
 
         // - Game server Fixed variables
         public override string StartPath => "bin\\win_x64\\eurotrucks2_server.exe"; // Game server start path
-        public string FullName = "Euro Truck Simulator Dedicated Server"; // Game server FullName
+        public string FullName = "Euro Truck Simulator 2 Dedicated Server"; // Game server FullName
         public bool AllowsEmbedConsole = true;  // Does this server support output redirect?
         public int PortIncrements = 0; // This tells WindowsGSM how many ports should skip after installation
         public object QueryMethod = new A2S(); // Query method should be use on current server type. Accepted value: null or new A2S() or new FIVEM() or new UT3()
@@ -47,6 +47,7 @@ namespace WindowsGSM.Plugins
         public string Maxplayers = "8"; // WGSM reads this as string but originally it is number or int (MaxPlayers)
         public string Port = "27015"; // WGSM reads this as string but originally it is number or int
         public string QueryPort = "27016"; // WGSM reads this as string but originally it is number or int (SteamQueryPort)
+
         public string Additional = string.Empty;
 
         // - Create a default cfg for the game server after installation
@@ -65,7 +66,11 @@ namespace WindowsGSM.Plugins
                 return null;
             }
             
-            string param = string.Empty;
+            string param = " -server -nosingle";
+            //param += $" -server_cfg {Path.Combine(ServerPath.GetServersServerFiles(_serverData.ServerID),"server_config.sii")}";
+
+            //param += $" -homedir {ServerPath.GetServersServerFiles(_serverData.ServerID)}";
+            param += $" {_serverData.ServerParam}";
 
             await Task.Delay(1000);
             modifyConfigFile();
@@ -121,7 +126,8 @@ namespace WindowsGSM.Plugins
         {
             await Task.Run(() =>
             {
-                Functions.ServerConsole.SendMessageToMainWindow(p.MainWindowHandle, "quit");
+                ServerConsole.SetMainWindow(p.MainWindowHandle);
+                ServerConsole.SendWaitToMainWindow("^c");
             });
             await Task.Delay(20000);
         }
@@ -164,10 +170,10 @@ namespace WindowsGSM.Plugins
             // Get the path to the My Documents folder for the current user
             string documentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             // Specify the path to your server_config.sii file
-            string ats = "Euro Truck Simulator";
+            string ets = "Euro Truck Simulator 2";
             string configFile = "server_config.sii";
 
-            string filePath = Path.Combine(documentsFolderPath, ats, configFile);
+            string filePath = Path.Combine(documentsFolderPath, configFile);
 
             string serverPath = ServerPath.GetServersServerFiles(_serverData.ServerID);
             string sii = "server_packages.sii";
@@ -227,12 +233,12 @@ namespace WindowsGSM.Plugins
                 Directory.CreateDirectory(savePath);
 
             // Automatically copy server_packages.sii and server_packages.dat
-            if (File.Exists(Path.Combine(documentsFolderPath,ats,sii)) && File.Exists(Path.Combine(documentsFolderPath, ats, dat)))
+            if (File.Exists(Path.Combine(documentsFolderPath, ets,sii)) && File.Exists(Path.Combine(documentsFolderPath, ets, dat)))
             {
                 try
                 {
-                    File.Copy(Path.Combine(documentsFolderPath, ats, sii), Path.Combine(savePath, sii), true);
-                    File.Copy(Path.Combine(documentsFolderPath, ats, dat), Path.Combine(savePath, dat), true);
+                    File.Copy(Path.Combine(documentsFolderPath, ets, sii), Path.Combine(savePath, sii), true);
+                    File.Copy(Path.Combine(documentsFolderPath, ets, dat), Path.Combine(savePath, dat), true);
                     Notice = $"{sii} and {dat} File has been copied to {savePath}";
                 }
                 catch (Exception ex)
