@@ -20,7 +20,7 @@ namespace WindowsGSM.Plugins
             name = "WindowsGSM.EuroTruckSimulator", // WindowsGSM.XXXX
             author = "ohmcodes",
             description = "WindowsGSM plugin for supporting Euro Truck Simulator Dedicated Server",
-            version = "1.0.1",
+            version = "1.1.1",
             url = "https://github.com/ohmcodes/WindowsGSM.EuroTruckSimulator", // Github repository link (Best practice)
             color = "#FFD700" // Color Hex
         };
