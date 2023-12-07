@@ -13,6 +13,9 @@
 4. Click **[RELOAD PLUGINS]** button or restart WindowsGSM
 5. Navigate "Servers" and Click "Install Game Server" and find "Euro Truck Simulator Dedicated Server [EuroTruckSimulator.cs]
 
+### Official Documentation
+🗃️ https://modding.scssoft.com/wiki/Documentation/Tools/Dedicated_Server
+
 ### Unofficial Documentation
 🗃️ https://steamcommunity.com/sharedfiles/filedetails/?id=2899373649
 
