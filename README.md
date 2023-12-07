@@ -1,4 +1,4 @@
-# WindowsGSM.EuroTruckSimulator
+# WindowsGSM.EuroTruckSimulator2
 🧩 WindowsGSM plugin that provides Euro Truck Simulator Dedicated server support!
 
 # WindowsGSM Installation: 
@@ -8,10 +8,10 @@
 
 # Plugin Installation:
 1. Download [latest](https://github.com/ohmcodes/WindowsGSM.EuroTruckSimulator/releases/latest) release
-2. Extract then Move **EuroTruckSimulator.cs** folder to **plugins** folder
+2. Extract then Move **EuroTruckSimulator2.cs** folder to **plugins** folder
 3. OR Press on the Puzzle Icon in the left bottom side and install this plugin by navigating to it and select the Zip File.
 4. Click **[RELOAD PLUGINS]** button or restart WindowsGSM
-5. Navigate "Servers" and Click "Install Game Server" and find "Euro Truck Simulator Dedicated Server [EuroTruckSimulator.cs]
+5. Navigate "Servers" and Click "Install Game Server" and find "Euro Truck Simulator 2 Dedicated Server [EuroTruckSimulator2.cs]
 
 ### Official Documentation
 🗃️ https://modding.scssoft.com/wiki/Documentation/Tools/Dedicated_Server
