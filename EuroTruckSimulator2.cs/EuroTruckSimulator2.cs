@@ -173,7 +173,7 @@ namespace WindowsGSM.Plugins
             string ets = "Euro Truck Simulator 2";
             string configFile = "server_config.sii";
 
-            string filePath = Path.Combine(documentsFolderPath, configFile);
+            string filePath = Path.Combine(documentsFolderPath, ets, configFile);
 
             string serverPath = ServerPath.GetServersServerFiles(_serverData.ServerID);
             string sii = "server_packages.sii";
