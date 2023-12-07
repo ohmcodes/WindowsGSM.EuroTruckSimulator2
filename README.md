@@ -64,6 +64,12 @@ max_players => Server Maxplayer (DONT CHANGE)
 12. Edit Port and QueryPort except MaxPlayers
 13. Start the Server
 
+# Available Start parameters
+```
+-server_cfg -------------- if you want to place your server_config.sii somewhere
+-homedir ----------------- redirects game/server home directory
+```
+
 # Server config parameters
 ```
  lobby_name: "Euro Truck Simulator 2 server"            // Session name, limited to 63 characters.
