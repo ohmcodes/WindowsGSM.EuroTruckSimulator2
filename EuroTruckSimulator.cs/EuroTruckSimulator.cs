@@ -31,8 +31,8 @@ namespace WindowsGSM.Plugins
         public string Error, Notice;
 
         // - Settings properties for SteamCMD installer
-        public override bool loginAnonymous => true;
-        public override string AppId => "2239530"; /* taken via https://steamdb.info/app/2239530/info/ */
+        public override bool loginAnonymous => false;
+        public override string AppId => "227300"; /* taken via https://steamdb.info/app/227300/info/ */
 
         // - Game server Fixed variables
         public override string StartPath => "bin\\win_x64\\eurotrucks2_server.exe"; // Game server start path
