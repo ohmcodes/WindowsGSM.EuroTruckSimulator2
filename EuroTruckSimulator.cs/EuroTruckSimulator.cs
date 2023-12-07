@@ -8,10 +8,11 @@ using WindowsGSM.Functions;
 using WindowsGSM.GameServer.Engine;
 using WindowsGSM.GameServer.Query;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace WindowsGSM.Plugins
 {
-    public class AmericanTruckSimulator : SteamCMDAgent
+    public class EuroTruckSimulator : SteamCMDAgent
     {
         // - Plugin Details
         public Plugin Plugin = new Plugin
@@ -19,13 +20,13 @@ namespace WindowsGSM.Plugins
             name = "WindowsGSM.EuroTruckSimulator", // WindowsGSM.XXXX
             author = "ohmcodes",
             description = "WindowsGSM plugin for supporting Euro Truck Simulator Dedicated Server",
-            version = "1.0.0",
+            version = "1.0.1",
             url = "https://github.com/ohmcodes/WindowsGSM.EuroTruckSimulator", // Github repository link (Best practice)
             color = "#FFD700" // Color Hex
         };
 
         // - Standard Constructor and properties
-        public AmericanTruckSimulator(ServerConfig serverData) : base(serverData) => base.serverData = _serverData = serverData;
+        public EuroTruckSimulator(ServerConfig serverData) : base(serverData) => base.serverData = _serverData = serverData;
         private readonly ServerConfig _serverData;
         public string Error, Notice;
 
@@ -49,7 +50,7 @@ namespace WindowsGSM.Plugins
         public string Additional = string.Empty;
 
         // - Create a default cfg for the game server after installation
-        public async void CreateServerCFG()
+        public void CreateServerCFG()
         {
             modifyConfigFile();
         }
@@ -66,6 +67,7 @@ namespace WindowsGSM.Plugins
             
             string param = string.Empty;
 
+            await Task.Delay(1000);
             modifyConfigFile();
 
             // Prepare Process
@@ -111,6 +113,7 @@ namespace WindowsGSM.Plugins
                 Error = e.Message;
                 return null; // return null if fail to start
             }
+            
         }
 
         // - Stop server function
