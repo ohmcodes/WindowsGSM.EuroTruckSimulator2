@@ -182,7 +182,7 @@ namespace WindowsGSM.Plugins
 
             // Specify the new values
             string ServerName = _serverData.ServerName;
-            string Port = _serverData.ServerQueryPort;
+            string Port = _serverData.ServerPort;
             string QueryPort = _serverData.ServerQueryPort;
             string GLST = _serverData.ServerGSLT;
 
